@@ -54,13 +54,13 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Build frontend
       working-directory: ./frontend
-    - run: |
+      run: |
         npm ci
         npm run build
 
     - name: Build backend
       working-directory: ./backend
-    - run: |
+      run: |
         ./gradlew clean build --stacktrace 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
