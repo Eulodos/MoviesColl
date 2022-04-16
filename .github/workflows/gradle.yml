@@ -33,7 +33,9 @@ jobs:
 
     - name: Change wrapper permissions
       run: chmod +x ./gradlew
+      working-directory: /backend
 
     - name: Execute Gradle build
       run: ./gradlew clean build --stacktrace
+      working-directory: /backend
 
