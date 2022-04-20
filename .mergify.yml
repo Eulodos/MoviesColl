@@ -1,0 +1,17 @@
+pull_request_rules:
+  - name: Automatically merge PRs from dependabot
+    conditions:
+      - and:
+        - author~=^dependabot(|-preview)\[bot\]$
+        - check-success=CodeQL
+        - check-success=build
+        - check-success=Analyze (javascript)
+        - check-success=Analyze (java)
+    actions:
+      merge:
+        method: merge
+  - name: Delete head branch after merge
+    conditions:
+      - merged
+    actions:
+      delete_head_branch:
