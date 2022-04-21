@@ -5,7 +5,6 @@ pull_request_rules:
         - author~=^dependabot(|-preview)\[bot\]$
         - check-success=CodeQL
         - check-success=build
-        - check-success=build (12.x)
         - check-success=build (14.x)
         - check-success=build (16.x)
         - check-success=Analyze (javascript)
