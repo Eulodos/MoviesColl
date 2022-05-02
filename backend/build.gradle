@@ -34,7 +34,6 @@ sonarqube {
         property "sonar.projectKey", "eulodos_MoviesColl_Backend"
         property "sonar.organization", "eulodos"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.jacoco.reportPaths", "build/reports/jacoco"
     }
 }
 
