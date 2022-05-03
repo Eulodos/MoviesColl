@@ -8,6 +8,4 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   title = 'MoviesColl';
 
-  constructor() { }
-
 }
