@@ -45,6 +45,7 @@ describe('NavbarComponent', () => {
     const links = fixture.debugElement.queryAll(By.css('a'));
     expect(links[0].nativeElement.getAttribute('href')).toBe('/');
     expect(links[1].nativeElement.getAttribute('href')).toBe('/list');
-    expect(links[2].nativeElement.getAttribute('href')).toBe('/temp');
+    expect(links[2].nativeElement.getAttribute('href')).toBe('/about');
+    expect(links[3].nativeElement.getAttribute('href')).toBe('/temp');
   })
 });
