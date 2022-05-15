@@ -9,6 +9,8 @@ pull_request_rules:
         - check-success=build (18.x)
         - check-success=Analyze (javascript)
         - check-success=Analyze (java)
+        - check-success=[MoviesColl] SonarCloud Code Analysis
+        - check-success=[eulodos_MoviesColl_Frontend] SonarCloud Code Analysis 
     actions:
       merge:
         method: merge
