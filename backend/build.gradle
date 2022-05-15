@@ -5,6 +5,7 @@ plugins {
     id 'checkstyle'
     id "org.sonarqube" version "3.3"
     id 'jacoco'
+    id 'com.google.cloud.tools.jib' version '3.2.1'
 }
 
 group = 'com.example'
@@ -45,6 +46,17 @@ jacocoTestReport {
     jacocoTestReport {
         reports {
             xml.enabled true
+        }
+    }
+
+    jib {
+        from {
+            image 'azul/zulu-openjdk-alpine:17'
+            credHelper = "pass"
+        }
+        to {
+            image 'eulodos/movies-coll-backend'
+            credHelper = "pass"
         }
     }
 }
