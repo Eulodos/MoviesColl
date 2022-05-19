@@ -12,6 +12,7 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   getPopular(): Observable<any> {
+    console.log("Before making call");
     return this.http.get<any>(this.url);
   }
 }

@@ -5,10 +5,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Service
-public class TmdbService implements MoviesService  {
+public class TmdbService implements MoviesService {
     private final WebClient webClient;
 
-    TmdbService(WebClient.Builder builder) {
+    TmdbService(final WebClient.Builder builder) {
         webClient = builder.baseUrl("https://api.themoviedb.org")
                 .defaultHeader("Authorization", "Bearer TOKEN")
                 .build();
