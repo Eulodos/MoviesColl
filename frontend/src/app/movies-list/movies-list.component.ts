@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError, map, of } from 'rxjs';
+import { MovieModelPageable } from '../model/movie-pageable.model';
+import { MovieModel } from '../model/movie.model';
 import { MoviesService } from '../movies.service';
 
 @Component({
@@ -8,17 +11,27 @@ import { MoviesService } from '../movies.service';
 })
 export class MoviesListComponent implements OnInit {
 
-  someFunkyS: any;
+  movies!: MovieModel[];
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
     this.moviesService.getPopular()
-      .subscribe(data => {
+      .pipe(
+        map((data: MovieModelPageable) => {
+          if (!data.results) {
+            throw new Error("No value present")
+          }
+          return data.results;
+        }),
+        catchError((err) => {
+          console.error(err);
+          return of([]);
+        })
+      )
+      .subscribe((data: MovieModel[]) => {
         console.log("Data coming back is: ", data);
-        this.someFunkyS = data;
-      })
+        this.movies = data;
+      });
   }
-
-
 }

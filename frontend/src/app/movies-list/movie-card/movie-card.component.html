@@ -1,0 +1,15 @@
+<mat-card class="movie-card mx-2 my-2">
+    <img mat-card-image [src]="movie.posterPath">
+    <mat-card-title class="d-flex justify-content-center w-100">
+        <div class="card-title">
+            {{ movie.title }}
+        </div>
+    </mat-card-title>
+
+    <mat-card-content class="text-center">{{ movie.releaseDate | date: 'd MMM, y' }}</mat-card-content>
+    <mat-card-actions class="d-flex justify-content-evenly">
+        <button mat-flat-button color="accent">Details</button>
+        <button mat-flat-button color="accent">To watchlist</button>
+        <button mat-flat-button color="accent">Like</button>
+    </mat-card-actions>
+</mat-card>
