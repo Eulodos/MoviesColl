@@ -10,6 +10,4 @@ export class MovieCardComponent {
 
   @Input() movie!: MovieModel;
 
-  constructor() { }
-
 }
