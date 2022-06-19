@@ -1,6 +1,9 @@
-package com.aw.moviescoll.movie;
+package com.aw.moviescoll.movie.domain;
 
+import com.aw.moviescoll.movie.domain.TmdbApiClient;
+import com.aw.moviescoll.movie.dto.ResourceNotFoundException;
 import com.aw.moviescoll.movie.dto.TmdbPopularMoviesDto;
+import com.aw.moviescoll.movie.dto.UnauthorizedException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

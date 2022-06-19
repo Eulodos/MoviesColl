@@ -1,7 +1,9 @@
 package com.aw.moviescoll.movie;
 
+import com.aw.moviescoll.movie.domain.TmdbApiClient;
 import com.aw.moviescoll.movie.dto.TmdbPopularMovieDto;
 import com.aw.moviescoll.movie.dto.TmdbPopularMoviesDto;
+import com.aw.moviescoll.movie.dto.UnauthorizedException;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

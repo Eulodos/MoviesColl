@@ -1,4 +1,4 @@
-package com.aw.moviescoll.movie;
+package com.aw.moviescoll.movie.dto;
 
 public class UnauthorizedException extends RuntimeException {
 

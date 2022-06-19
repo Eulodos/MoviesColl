@@ -1,4 +1,4 @@
-package com.aw.moviescoll.movie;
+package com.aw.moviescoll.movie.domain;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

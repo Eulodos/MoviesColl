@@ -1,26 +1,26 @@
-package com.aw.moviescoll.movie;
+package com.aw.moviescoll.movie.domain;
 
+import com.aw.moviescoll.movie.dto.ResourceNotFoundException;
 import com.aw.moviescoll.movie.dto.TmdbPopularMoviesDto;
+import com.aw.moviescoll.movie.dto.UnauthorizedException;
 import com.jayway.jsonpath.JsonPath;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Service
-class TmdbApiClient {
+public class TmdbApiClient {
 
     private final WebClient webClient;
 
-    TmdbApiClient(final WebClient webClient) {
+    public TmdbApiClient(final WebClient webClient) {
         this.webClient = webClient;
     }
 
-    TmdbPopularMoviesDto getPopularMovies() {
+    public TmdbPopularMoviesDto getPopularMovies() {
         return this.webClient
                 .get()
-//                .uri("/3/trending/movie/week")
-                .uri("/6/trading/movie/week")
+                .uri("/3/trending/movie/week")
                 .retrieve()
                 .onStatus(httpStatus -> httpStatus.value() == 401, clientResponse -> clientResponse.bodyToMono(String.class).flatMap(s -> {
                     String originalMessage = JsonPath.read(s, "$.status_message");

@@ -1,6 +1,10 @@
 package com.aw.moviescoll.movie;
 
+import com.aw.moviescoll.movie.domain.TmdbApiClient;
+import com.aw.moviescoll.movie.dto.ErrorResponse;
+import com.aw.moviescoll.movie.dto.ResourceNotFoundException;
 import com.aw.moviescoll.movie.dto.TmdbPopularMoviesDto;
+import com.aw.moviescoll.movie.dto.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
