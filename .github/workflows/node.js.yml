@@ -56,7 +56,9 @@ jobs:
         with:
           name: code-coverage-report
           path: frontend/coverage/lcov.info
-      - run: pwd      
+      - run: pwd
+      - run: ls -la frontend/
+      - run: ls -la frontend/coverage/      
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
