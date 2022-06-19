@@ -1,6 +1,7 @@
 package com.aw.moviescoll.movie;
 
 import com.aw.moviescoll.movie.domain.TmdbApiClient;
+import com.aw.moviescoll.movie.dto.ResourceNotFoundException;
 import com.aw.moviescoll.movie.dto.TmdbPopularMovieDto;
 import com.aw.moviescoll.movie.dto.TmdbPopularMoviesDto;
 import com.aw.moviescoll.movie.dto.UnauthorizedException;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.math.BigDecimal;
@@ -27,9 +29,11 @@ class TmdbApiControllerTest {
 
     @Test
     void shouldReturnHttpOkWhenThereAreNoErrors() {
-        TmdbPopularMovieDto firstMovie = new TmdbPopularMovieDto(1, false, "", List.of(1, 2), "IT", "Papa Americano", "Si", "", "2034-02-11", "Papa Americano", false, BigDecimal.TEN, 2137, BigDecimal.ONE, "film");
-        TmdbPopularMovieDto secondMovie = new TmdbPopularMovieDto(2, true, "", List.of(6, 9), "FR", "Foxy Lady", "...", "", "2029-04-19", "Foxy Lady", true, BigDecimal.TEN, 420, BigDecimal.ONE, "film");
-        TmdbPopularMoviesDto popularMoviesDto = new TmdbPopularMoviesDto(1, List.of(firstMovie, secondMovie), 2, 1);
+        final int firstMovieVoteCount = 2137;
+        final int secondMovieVoteCount = 420;
+        final TmdbPopularMovieDto firstMovie = new TmdbPopularMovieDto(1, false, "", List.of(1, 2), "IT", "Papa Americano", "Si", "", "2034-02-11", "Papa Americano", false, BigDecimal.TEN, firstMovieVoteCount, BigDecimal.ONE, "film");
+        final TmdbPopularMovieDto secondMovie = new TmdbPopularMovieDto(2, true, "", List.of(6, 9), "FR", "Foxy Lady", "...", "", "2029-04-19", "Foxy Lady", true, BigDecimal.TEN, secondMovieVoteCount, BigDecimal.ONE, "film");
+        final TmdbPopularMoviesDto popularMoviesDto = new TmdbPopularMoviesDto(1, List.of(firstMovie, secondMovie), 2, 1);
 
         given(tmdbApiClient.getPopularMovies())
                 .willReturn(popularMoviesDto);
@@ -51,7 +55,21 @@ class TmdbApiControllerTest {
                 .expectStatus().isUnauthorized()
                 .expectBody()
                 .jsonPath("$.message").isEqualTo("Invalid API key")
-                .jsonPath("$.status").isEqualTo(401)
+                .jsonPath("$.status").isEqualTo(HttpStatus.UNAUTHORIZED.value())
+                .jsonPath("$.timestamp").exists();
+    }
+
+    @Test
+    void shouldReturnHttpNotFoundWhenRequestedResourceWasNotFound() {
+        given(tmdbApiClient.getPopularMovies()).willThrow(new ResourceNotFoundException("Requested resource not found"));
+
+        webTestClient.get()
+                .uri("/movies/popular")
+                .exchange()
+                .expectStatus().isNotFound()
+                .expectBody()
+                .jsonPath("$.message").isEqualTo("Requested resource not found")
+                .jsonPath("$.status").isEqualTo(HttpStatus.NOT_FOUND.value())
                 .jsonPath("$.timestamp").exists();
     }
 }

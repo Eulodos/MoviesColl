@@ -31,13 +31,13 @@ class TmdbApiController {
 
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<ErrorResponse> handleUnauthorizedException(final UnauthorizedException ex) {
-        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.UNAUTHORIZED.value(), Instant.now(), ex.getMessage());
-        return ResponseEntity.status(401).body(errorResponse);
+        final ErrorResponse errorResponse = new ErrorResponse(HttpStatus.UNAUTHORIZED.value(), Instant.now(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED.value()).body(errorResponse);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFoundException(final ResourceNotFoundException ex) {
-        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), Instant.now(), ex.getMessage());
-        return ResponseEntity.status(404).body(errorResponse);
+        final ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), Instant.now(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(errorResponse);
     }
 }

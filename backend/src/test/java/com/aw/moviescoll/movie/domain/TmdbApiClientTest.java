@@ -1,6 +1,5 @@
 package com.aw.moviescoll.movie.domain;
 
-import com.aw.moviescoll.movie.domain.TmdbApiClient;
 import com.aw.moviescoll.movie.dto.ResourceNotFoundException;
 import com.aw.moviescoll.movie.dto.TmdbPopularMoviesDto;
 import com.aw.moviescoll.movie.dto.UnauthorizedException;
@@ -30,7 +29,7 @@ class TmdbApiClientTest {
 
     @BeforeEach
     void setUp() {
-        WebClient webClient = WebClient.builder()
+        final WebClient webClient = WebClient.builder()
                 .exchangeFunction(exchangeFunction).build();
         this.tmdbApiClient = new TmdbApiClient(webClient);
     }
@@ -39,7 +38,7 @@ class TmdbApiClientTest {
     void shouldFetchPopularMovies() {
         Mockito.when(exchangeFunction.exchange(Mockito.any(ClientRequest.class))).thenReturn(exchangePopular());
 
-        TmdbPopularMoviesDto popularMovies = this.tmdbApiClient.getPopularMovies();
+        final TmdbPopularMoviesDto popularMovies = this.tmdbApiClient.getPopularMovies();
 
         assertThat(popularMovies.totalPages()).isEqualTo(1);
         assertThat(popularMovies.page()).isEqualTo(1);
