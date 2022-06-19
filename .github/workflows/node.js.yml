@@ -59,7 +59,8 @@ jobs:
       - run: pwd
       - run: ls -la frontend/
       - run: ls -la frontend/coverage/
-      - run: cat frontend/coverage/lcov.info      
+      - run: ls -la frontend/coverage/lcov.info
+      - run: cat frontend/coverage/lcov.info/lcov.info      
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
