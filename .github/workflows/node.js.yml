@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
-          path: frontend/coverage/MoviesColl/lcov.info
+          path: frontend/coverage/lcov.info
 
   sonar:
     needs: build
@@ -55,7 +55,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: code-coverage-report
-          path: ./frontend/coverage/lcov.info
+          path: frontend/coverage/lcov.info
                 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
