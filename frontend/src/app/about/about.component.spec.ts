@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { AboutComponent } from './about.component';
 
 
@@ -22,4 +23,9 @@ describe('AboutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have title header', () => {
+    const header = fixture.debugElement.query(By.css('h1')).nativeElement;
+    expect(header.textContent).toContain('About this app');
+  })
 });

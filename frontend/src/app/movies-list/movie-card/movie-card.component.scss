@@ -1,0 +1,40 @@
+.movie-card {
+    background: rgb(105,82,214);
+    background: linear-gradient(45deg, rgba(105,82,214,1) 0%, rgba(120,34,255,1) 50%, rgba(67,0,99,1) 100%);  
+    width: 300px;
+    height: 600px;
+    // box-sizing: content-box;
+}
+
+.card-title {
+display: flex;
+line-clamp: 2;
+box-orient: vertical;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+height: 2em;
+line-height: 1em;
+color: #ffd740;
+font-weight: 800;
+}
+
+mat-card img {
+    object-fit: cover;
+}
+
+mat-card-actions {
+    object-fit: contain;
+}
+
+mat-card-title {
+    width: fit-content;
+    box-sizing: content-box;
+    font-size: 1em;
+}
+
+mat-card-content {
+    color: #ffd740;
+}

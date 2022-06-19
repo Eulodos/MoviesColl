@@ -1,1 +1,7 @@
-<p class="list-message">movies-list works!</p>
+<div>
+    <p class="list-message text-center mt-4">Popular movies right now</p>
+
+    <div class="d-flex justify-content-around align-items-center flex-wrap mt-6">
+        <app-movie-card *ngFor="let mov of movies" [movie]="mov" class="d-flex flex-column"></app-movie-card>
+    </div>
+</div>
