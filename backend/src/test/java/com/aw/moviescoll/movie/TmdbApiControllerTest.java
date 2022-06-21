@@ -2,8 +2,8 @@ package com.aw.moviescoll.movie;
 
 import com.aw.moviescoll.movie.domain.TmdbApiClient;
 import com.aw.moviescoll.movie.dto.ResourceNotFoundException;
-import com.aw.moviescoll.movie.dto.TmdbPopularMovieDto;
-import com.aw.moviescoll.movie.dto.TmdbPopularMoviesDto;
+import com.aw.moviescoll.movie.dto.PopularMovieDto;
+import com.aw.moviescoll.movie.dto.PopularMoviesDto;
 import com.aw.moviescoll.movie.dto.UnauthorizedException;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -31,9 +31,9 @@ class TmdbApiControllerTest {
     void shouldReturnHttpOkWhenThereAreNoErrors() {
         final int firstMovieVoteCount = 2137;
         final int secondMovieVoteCount = 420;
-        final TmdbPopularMovieDto firstMovie = new TmdbPopularMovieDto(1, false, "", List.of(1, 2), "IT", "Papa Americano", "Si", "", "2034-02-11", "Papa Americano", false, BigDecimal.TEN, firstMovieVoteCount, BigDecimal.ONE, "film");
-        final TmdbPopularMovieDto secondMovie = new TmdbPopularMovieDto(2, true, "", List.of(6, 9), "FR", "Foxy Lady", "...", "", "2029-04-19", "Foxy Lady", true, BigDecimal.TEN, secondMovieVoteCount, BigDecimal.ONE, "film");
-        final TmdbPopularMoviesDto popularMoviesDto = new TmdbPopularMoviesDto(1, List.of(firstMovie, secondMovie), 2, 1);
+        final PopularMovieDto firstMovie = new PopularMovieDto(1, false, "", List.of(1, 2), "IT", "Papa Americano", "Si", "", "2034-02-11", "Papa Americano", false, BigDecimal.TEN, firstMovieVoteCount, BigDecimal.ONE, "film");
+        final PopularMovieDto secondMovie = new PopularMovieDto(2, true, "", List.of(6, 9), "FR", "Foxy Lady", "...", "", "2029-04-19", "Foxy Lady", true, BigDecimal.TEN, secondMovieVoteCount, BigDecimal.ONE, "film");
+        final PopularMoviesDto popularMoviesDto = new PopularMoviesDto(1, List.of(firstMovie, secondMovie), 2, 1);
 
         given(tmdbApiClient.getPopularMovies())
                 .willReturn(popularMoviesDto);
