@@ -1,7 +1,7 @@
 package com.aw.moviescoll.movie.domain;
 
 import com.aw.moviescoll.movie.dto.ResourceNotFoundException;
-import com.aw.moviescoll.movie.dto.TmdbPopularMoviesDto;
+import com.aw.moviescoll.movie.dto.PopularMoviesDto;
 import com.aw.moviescoll.movie.dto.UnauthorizedException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ class TmdbApiClientTest {
     void shouldFetchPopularMovies() {
         Mockito.when(exchangeFunction.exchange(Mockito.any(ClientRequest.class))).thenReturn(exchangePopular());
 
-        final TmdbPopularMoviesDto popularMovies = this.tmdbApiClient.getPopularMovies();
+        final PopularMoviesDto popularMovies = this.tmdbApiClient.getPopularMovies();
 
         assertThat(popularMovies.totalPages()).isEqualTo(1);
         assertThat(popularMovies.page()).isEqualTo(1);

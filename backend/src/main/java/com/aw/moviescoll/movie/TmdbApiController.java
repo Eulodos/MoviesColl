@@ -2,15 +2,13 @@ package com.aw.moviescoll.movie;
 
 import com.aw.moviescoll.movie.domain.TmdbApiClient;
 import com.aw.moviescoll.movie.dto.ErrorResponse;
+import com.aw.moviescoll.movie.dto.PopularMoviesDto;
 import com.aw.moviescoll.movie.dto.ResourceNotFoundException;
-import com.aw.moviescoll.movie.dto.TmdbPopularMoviesDto;
 import com.aw.moviescoll.movie.dto.UnauthorizedException;
+import com.aw.moviescoll.movie.dto.movie_details.MovieDetailsDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
 
@@ -25,8 +23,18 @@ class TmdbApiController {
     }
 
     @GetMapping("/popular")
-    public ResponseEntity<TmdbPopularMoviesDto> getPopularThisWeek() {
+    public ResponseEntity<PopularMoviesDto> getPopularThisWeek() {
         return ResponseEntity.ok().body(this.tmdbApiClient.getPopularMovies());
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<PopularMoviesDto> searchMovie(@RequestParam("query") final String query) {
+        return ResponseEntity.ok().body(this.tmdbApiClient.searchMovie(query));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MovieDetailsDto> getMovieDetails(@PathVariable("id") final long id) {
+        return ResponseEntity.ok().body(this.tmdbApiClient.getMovieDetails(id));
     }
 
     @ExceptionHandler(UnauthorizedException.class)

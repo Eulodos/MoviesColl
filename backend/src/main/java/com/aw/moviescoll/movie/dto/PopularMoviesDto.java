@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 
 import java.util.List;
 
-public record TmdbPopularMoviesDto(
+public record PopularMoviesDto(
         int page,
-        List<TmdbPopularMovieDto> results,
+        List<PopularMovieDto> results,
         @JsonAlias("total_results")
         int totalResults,
         @JsonAlias("total_pages")
