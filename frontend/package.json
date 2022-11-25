@@ -29,7 +29,7 @@
   "devDependencies": {
     "@angular-devkit/architect": "^0.1402.9",
     "@angular-devkit/build-angular": "^13.3.9",
-    "@angular-eslint/builder": "14.2.0",
+    "@angular-eslint/builder": "15.1.0",
     "@angular-eslint/eslint-plugin": "15.1.0",
     "@angular-eslint/eslint-plugin-template": "15.0.0",
     "@angular-eslint/schematics": "13.5.0",
