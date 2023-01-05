@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatCard, MatCardActions, MatCardContent, MatCardTitle } from '@angular/material/card';
+import { MatLegacyCard as MatCard, MatLegacyCardActions as MatCardActions, MatLegacyCardContent as MatCardContent, MatLegacyCardTitle as MatCardTitle } from '@angular/material/legacy-card';
 import { By } from '@angular/platform-browser';
 import { of, throwError } from 'rxjs';
 import { MoviesService } from '../movies.service';
