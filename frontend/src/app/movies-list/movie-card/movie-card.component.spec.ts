@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatLegacyCard as MatCard, MatLegacyCardActions as MatCardActions, MatLegacyCardContent as MatCardContent, MatLegacyCardImage as MatCardImage, MatLegacyCardTitle as MatCardTitle } from '@angular/material/legacy-card';
+import { MatCard, MatCardActions, MatCardContent, MatCardImage, MatCardTitle } from '@angular/material/card';
 import { By } from '@angular/platform-browser';
 import { MovieModel } from 'src/app/model/movie.model';
 import { MovieCardComponent } from './movie-card.component';
