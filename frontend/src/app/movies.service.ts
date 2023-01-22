@@ -4,20 +4,18 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { MovieModelPageable } from './model/movie-pageable.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MoviesService {
-
   url: string = 'http://localhost:8080';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getPopular(): Observable<MovieModelPageable> {
-    console.log("Fetching list of movies");
-    return this.http.get<MovieModelPageable>(`${this.url}/movies/popular`)
-      .pipe(
-        catchError(this.handleError)
-      );
+    console.log('Fetching list of movies');
+    return this.http
+      .get<MovieModelPageable>(`${this.url}/movies/popular`)
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -28,9 +26,13 @@ export class MoviesService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
       console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
     }
     // Return an observable with a user-facing error message.
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
   }
 }
