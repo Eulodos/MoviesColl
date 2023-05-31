@@ -5,7 +5,7 @@ plugins {
     id 'checkstyle'
     id "org.sonarqube" version "4.2.0.3129"
     id 'jacoco'
-    id 'com.google.cloud.tools.jib' version '3.3.1'
+    id 'com.google.cloud.tools.jib' version '3.3.2'
 }
 
 group = 'com.example'
